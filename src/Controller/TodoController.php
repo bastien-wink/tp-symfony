@@ -28,13 +28,13 @@ class TodoController extends AbstractController
 
 
     /**
-     * @Route("/detail/{idTodo}", name="todo_detail")
+     * @Route("/detail/{id}", name="todo_detail")
      */
-    public function detail($idTodo = 1)
+    public function detail($id = 1)
     {
         return $this->render(
             'todo/detail.html.twig',
-            ["idTodo" => $idTodo]
+            ["idTodo" => $id]
         );
     }
 

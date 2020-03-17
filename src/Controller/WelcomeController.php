@@ -8,7 +8,7 @@ use Symfony\Component\Routing\Annotation\Route;
 class WelcomeController extends AbstractController
 {
     /**
-     * @Route("/hello/{lastname}", name="say_hello")
+     * @Route("/hello/{lastname}", name="hello")
      */
     public function hello($lastname = 'valeur par default')
     {
