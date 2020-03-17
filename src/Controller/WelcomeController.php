@@ -8,19 +8,18 @@ use Symfony\Component\Routing\Annotation\Route;
 class WelcomeController extends AbstractController
 {
     /**
-     * @Route("/hello")
+     * @Route("/hello/{lastname}", name="say_hello")
      */
-    public function hello()
+    public function hello($lastname = 'valeur par default')
     {
         $firstname = "bastien";
 
         return $this->render(
             'welcome/hello.html.twig',
-
             [
+                "lastname" => $lastname,
                 "firstnameTest" => $firstname,
             ]
-
         );
     }
 

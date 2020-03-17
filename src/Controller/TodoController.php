@@ -8,9 +8,9 @@ use Symfony\Component\Routing\Annotation\Route;
 class TodoController extends AbstractController
 {
     /**
-     * @Route("/show")
+     * @Route("/list")
      */
-    public function show()
+    public function list()
     {
         $todoListExample = [
             'aller sur la lune',
@@ -21,8 +21,22 @@ class TodoController extends AbstractController
         // TodoList sera le nom de la variable dans mon fichier twig
         // Elle contient le tableau de Todo
         return $this->render(
-            'todo/show.html.twig',
+            'todo/list.html.twig',
             ["todoList" => $todoListExample]
         );
     }
+
+
+    /**
+     * @Route("/detail-{idTodo}")
+     */
+    public function detail($idTodo = 1)
+    {
+        return $this->render(
+            'todo/detail.html.twig',
+            ["idTodo" => $idTodo]
+        );
+    }
+
+
 }
