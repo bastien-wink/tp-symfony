@@ -1,17 +1,19 @@
 <!DOCTYPE html>
 <html>
 <head>
-    {% block head %}
-        <link rel="stylesheet" href="style.css"/>
-        <title>{% block title %}{% endblock %} - My Webpage</title>
+    <title>
+    {% block title %}
+        Mon application Todo-list
     {% endblock %}
+    </title>
 </head>
 <body>
-<div id="content">{% block content %}{% endblock %}</div>
-<div id="footer">
-    {% block footer %}
-        © Copyright 2011 by <a href="http://domain.invalid/">you</a>.
-    {% endblock %}
-</div>
+
+    <div style="width:100%; text-align:center;">
+        <img src="https://wink-dev.com/images/todolist.png" alt="logo" />
+    </div>
+
+    {% block content %}{% endblock %}
+
 </body>
 </html>
