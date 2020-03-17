@@ -1,0 +1,16 @@
+{% extends "base.html.twig" %}
+
+{% block content %}
+
+    <div style="color:white; padding:10px; background: #1b9448; text-align: center">
+
+        {% if (luckyNumber < 3) %}
+            :(
+        {% else %}
+            :)
+        {% endif %}
+
+        {{ luckyNumber }}
+    </div>
+
+{% endblock %}

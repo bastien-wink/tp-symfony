@@ -13,14 +13,34 @@ class WelcomeController extends AbstractController
     public function hello()
     {
         $firstname = "bastien";
+        $luckyNumber = rand(1,6);
 
         return $this->render(
             'welcome/hello.html.twig',
 
             [
-                "firstnameTest" => $firstname
+                "firstnameTest" => $firstname,
+                "luckyNumber" => $luckyNumber
             ]
 
         );
     }
+
+    /**
+     * @Route("/luckyNumber")
+     */
+    public function luckyNumber()
+    {
+        $luckyNumber = rand(1,6);
+
+        return $this->render(
+            'welcome/luckyNumber.html.twig',
+
+            [
+                "luckyNumber" => $luckyNumber
+            ]
+
+        );
+    }
+
 }
