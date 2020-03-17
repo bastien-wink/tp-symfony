@@ -8,7 +8,7 @@ use Symfony\Component\Routing\Annotation\Route;
 class TodoController extends AbstractController
 {
     /**
-     * @Route("/list")
+     * @Route("/list", name="todo_list")
      */
     public function list()
     {
