@@ -28,7 +28,7 @@ class TodoController extends AbstractController
 
 
     /**
-     * @Route("/detail-{idTodo}")
+     * @Route("/detail/{idTodo}", name="todo_detail")
      */
     public function detail($idTodo = 1)
     {

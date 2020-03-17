@@ -2,28 +2,29 @@
 <html>
 <head>
     <title>
-    {% block title %}
-        Mon application Todo-list
-    {% endblock %}
+        {% block title %}
+            Mon application Todo-list
+        {% endblock %}
     </title>
 
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+          integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
 </head>
 <body class="container">
 
-    <div style="width:100%; text-align:center;">
-        <img src="https://wink-dev.com/images/todolist.png" alt="logo" />
-    </div>
+<div style="width:100%; text-align:center;">
+    <img src="https://wink-dev.com/images/todolist.png" alt="logo"/>
+</div>
 
-    <nav class="navbar  navbar-dark bg-dark">
-        <a href="/">Home</a>
-        <a href="/list">Todo list</a>
-        <a href="#">Lien 2</a>
-        <a href="#">Lien 3</a>
-        <a href="#">Lien 4</a>
-    </nav>
+<nav class="navbar  navbar-dark bg-dark">
+    <a href="/">Home</a>
+    <a href="/list">Todo list</a>
+    <a href="{{ path('todo_detail', {'idTodo':2}) }}">Detail todo numéro 2</a>
+    <a href="#">Lien 3</a>
+    <a href="#">Lien 4</a>
+</nav>
 
-    {% block content %}{% endblock %}
+{% block content %}{% endblock %}
 
 </body>
 </html>
