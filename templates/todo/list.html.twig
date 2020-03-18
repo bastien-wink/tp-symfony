@@ -8,15 +8,16 @@
     <ul>
         {% for todoItem in todoList %}
             <li>
-
-                {{ todoItem.title |capitalize }}.
-                <strong>
-                    {% if todoItem.done == 1 %}
-                        Fait !
-                    {% else %}
-                        A faire !
-                    {% endif %}
-                </strong>
+                <a href="{{ path('todo_detail', {'id':todoItem.id}) }}">
+                    {{ todoItem.title |capitalize }}.
+                    <strong>
+                        {% if todoItem.done == 1 %}
+                            Fait !
+                        {% else %}
+                            A faire !
+                        {% endif %}
+                    </strong>
+                </a>
             </li>
         {% endfor %}
     </ul>

@@ -40,11 +40,10 @@ class TodoController extends AbstractController
         );
     }
 
-
     /**
      * @Route("/detail/{id}", name="todo_detail")
      */
-    public function detail($id = 1, TodoItemRepository $todoRepo)
+    public function detail($id, TodoItemRepository $todoRepo)
     {
         $todoItem = $todoRepo->find($id);
 
