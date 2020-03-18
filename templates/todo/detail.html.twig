@@ -8,9 +8,13 @@
 
     <h1>Détail de mon Todo</h1>
 
-    Identifiant : {{ idTodo }}<br/>
-    Nom du Todo : test<br/>
-    Fait, oupa ?<br/>
-    A faire avant le 12 Février<br/>
+    Identifiant : {{ todoItem.id }} <br/>
+    Nom du Todo : {{ todoItem.title }}<br/>
+    {% if todoItem.done == 1 %}
+        Fait !
+    {% else %}
+        A faire !
+    {% endif %}<br/>
+    {#A faire avant le 12 Février<br/>#}
 
 {% endblock %}

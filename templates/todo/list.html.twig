@@ -6,8 +6,20 @@
 
 {% block content %}
     <ul>
-        {% for item in todoList %}
-            <li>{{ item|capitalize }}</li>
+        {% for todoItem in todoList %}
+            <li>
+
+                {{ todoItem.title |capitalize }}.
+                <strong>
+                    {% if todoItem.done == 1 %}
+                        Fait !
+                    {% else %}
+                        A faire !
+                    {% endif %}
+                </strong>
+            </li>
         {% endfor %}
     </ul>
+    {#Vous avez {{ todoList|length }} tâches à faire.#}
+    Vous avez {{ countResult }} tâches à faire.
 {% endblock %}
