@@ -17,9 +17,9 @@ class TodoController extends AbstractController
      */
     public function list(TodoItemRepository $todoRepo, $minId = 0, $maxId=999, $sort = 'id')
     {
-        if($sort != 'title' && $sort != 'description'){
-            throw new \Exception('sort uniquement par title ou description');
-        }
+        //if($sort != 'title' && $sort != 'description'){
+        //    throw new \Exception('sort uniquement par title ou description');
+        //}
 
         $countResult = $todoRepo->count(['done' => false]);
 
