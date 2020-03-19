@@ -4,7 +4,7 @@
 
     <br/>
     {% for book in books %}
-        {{ book.title }}, {{ book.pages }} pages<br/>
+        {{ book.title }}, {{ book.pages }} pages, {{ book.publishDate? book.publishDate|date('Y/m/d'):'Pas de date' }}<br/>
     {% endfor %}
 
 {% endblock %}

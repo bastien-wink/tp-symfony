@@ -31,6 +31,11 @@ class Book
      */
     private $description;
 
+    /**
+     * @ORM\Column(type="date", nullable=true)
+     */
+    private $publishDate;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -68,6 +73,18 @@ class Book
     public function setDescription(?string $description): self
     {
         $this->description = $description;
+
+        return $this;
+    }
+
+    public function getPublishDate(): ?\DateTimeInterface
+    {
+        return $this->publishDate;
+    }
+
+    public function setPublishDate(?\DateTimeInterface $publishDate): self
+    {
+        $this->publishDate = $publishDate;
 
         return $this;
     }

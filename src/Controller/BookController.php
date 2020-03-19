@@ -41,6 +41,7 @@ class BookController extends AbstractController
 
         $book = $bookRepository->find(3);
         $book->setPages(9);
+        $book->setPublishDate(new \DateTime('now'));
 
         $em->flush();
 
