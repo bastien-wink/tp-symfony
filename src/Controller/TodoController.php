@@ -94,6 +94,9 @@ class TodoController extends AbstractController
 
         //$sportTodo->setDone(true);
         $sportTodo->setTitle("Faire du sport 60min");
+        $sportTodo->setTitle("Faire du sport 90min");
+        $sportTodo->setTitle("Faire du sport 120min");
+        $sportTodo->setTitle("Faire du sport 30min");
 
         $em->flush();
 
