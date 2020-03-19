@@ -13,7 +13,7 @@ class BookController extends AbstractController
      */
     public function index(BookRepository $bookRepository, $param1)
     {
-        $books = $bookRepository->findAll();
+        $books = $bookRepository->findByExampleField();
 
         //$laBible = $bookRepository
         //              ->findOneBy(['title'=>'La Bible']);

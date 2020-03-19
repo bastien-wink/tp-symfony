@@ -13,6 +13,8 @@ class TodoController extends AbstractController
      */
     public function list(TodoItemRepository $todoRepo)
     {
+        $countResult = $todoRepo->count(['done' => false]);
+
         //$todoListExample = [
         //    'aller sur la lune',
         //    'acheter du pain',
@@ -25,9 +27,10 @@ class TodoController extends AbstractController
         // TP 8.2
         //$todoList = $todoRepo->findByDone(false);
         //$todoList = $todoRepo->findBy(array('done' => false]);
-        $todoList = $todoRepo->findBy(['done' => false]);
+        //$todoList = $todoRepo->findBy(['done' => false]);
 
-        $countResult = $todoRepo->count(['done' => false]);
+        // TP 9.1
+        $todoList = $todoRepo->getBetween2and7();
 
         // TodoList sera le nom de la variable dans mon fichier twig
         // Elle contient le tableau de Todo

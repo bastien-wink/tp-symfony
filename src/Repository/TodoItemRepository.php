@@ -19,6 +19,26 @@ class TodoItemRepository extends ServiceEntityRepository
         parent::__construct($registry, TodoItem::class);
     }
 
+    public function getBetween2and7(){
+        $query = $this->createQueryBuilder('t');
+
+        /* SELECT *
+            FROM tp_todo_list.todo_item
+            WHERE todo_item.ID > 2
+              AND todo_item.ID < 7;
+         */
+
+        $query->where('t.id > 2');
+        $query->andWhere('t.id < 7');
+
+        return $query->getQuery()->getResult();
+
+    }
+
+
+
+
+
     // /**
     //  * @return TodoItem[] Returns an array of TodoItem objects
     //  */

@@ -9,6 +9,7 @@
         {% for todoItem in todoList %}
             <li>
                 <a href="{{ path('todo_detail', {'id':todoItem.id}) }}">
+                    {{ todoItem.id }} :
                     {{ todoItem.title |capitalize }}.
                     <strong>
                         {% if todoItem.done == 1 %}
