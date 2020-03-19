@@ -3,18 +3,24 @@
 namespace App\Controller;
 
 use App\Repository\TodoItemRepository;
+use http\Exception\InvalidArgumentException;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\Routing\Annotation\Route;
 
 class TodoController extends AbstractController
 {
     /**
-     * @Route("/list/min-{minId}/max-{maxId}", name="todo_list")
+     * @Route("/list/min-{minId}/max-{maxId}/{sort}", name="todo_list")
+     *
      * @Route("/list", name="todo_list_base")
      * @Route("/l", name="todo_list_shortcut")
      */
-    public function list(TodoItemRepository $todoRepo, $minId = 0, $maxId=999)
+    public function list(TodoItemRepository $todoRepo, $minId = 0, $maxId=999, $sort = 'id')
     {
+        if($sort != 'title' && $sort != 'description'){
+            throw new \Exception('sort uniquement par title ou description');
+        }
+
         $countResult = $todoRepo->count(['done' => false]);
 
         //$todoListExample = [
@@ -32,7 +38,7 @@ class TodoController extends AbstractController
         //$todoList = $todoRepo->findBy(['done' => false]);
 
         // TP 9.1
-        $todoList = $todoRepo->getBetween($minId, $maxId);
+        $todoList = $todoRepo->getBetween($minId, $maxId, $sort);
 
         // TodoList sera le nom de la variable dans mon fichier twig
         // Elle contient le tableau de Todo

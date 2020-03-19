@@ -19,7 +19,7 @@ class TodoItemRepository extends ServiceEntityRepository
         parent::__construct($registry, TodoItem::class);
     }
 
-    public function getBetween($min, $max){
+    public function getBetween($min, $max, $sort){
         $query = $this->createQueryBuilder('t');
 
         /* SELECT *
@@ -30,6 +30,7 @@ class TodoItemRepository extends ServiceEntityRepository
 
         $query->where('t.id > :min');
         $query->andWhere('t.id < :max');
+        $query->orderBy("t.$sort", 'ASC');
         $query->setParameter(':min', $min);
         $query->setParameter(':max', $max);
 
