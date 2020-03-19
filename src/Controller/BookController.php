@@ -34,8 +34,8 @@ class BookController extends AbstractController
      */
     public function doctrineDemo(Request $request, EntityManagerInterface $em, BookRepository $bookRepository)
     {
-        dump($request);die;
-        
+        //dump($request);die;
+
         //$book = new Book();
         //$book->setPages(12);
         //$book->setTitle("Toto a la plage");
