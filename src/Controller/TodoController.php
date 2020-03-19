@@ -28,7 +28,7 @@ class TodoController extends AbstractController
 
         // TP 8.2
         //$todoList = $todoRepo->findByDone(false);
-        //$todoList = $todoRepo->findBy(array('done' => false]);
+        //$todoList = $todoRepo->findBy(array('done' => false));
         //$todoList = $todoRepo->findBy(['done' => false]);
 
         // TP 9.1
