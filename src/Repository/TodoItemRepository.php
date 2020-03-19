@@ -19,7 +19,7 @@ class TodoItemRepository extends ServiceEntityRepository
         parent::__construct($registry, TodoItem::class);
     }
 
-    public function getBetween2and7(){
+    public function getBetween($min, $max){
         $query = $this->createQueryBuilder('t');
 
         /* SELECT *
@@ -28,8 +28,10 @@ class TodoItemRepository extends ServiceEntityRepository
               AND todo_item.ID < 7;
          */
 
-        $query->where('t.id > 2');
-        $query->andWhere('t.id < 7');
+        $query->where('t.id > :min');
+        $query->andWhere('t.id < :max');
+        $query->setParameter(':min', $min);
+        $query->setParameter(':max', $max);
 
         return $query->getQuery()->getResult();
 

@@ -9,9 +9,11 @@ use Symfony\Component\Routing\Annotation\Route;
 class TodoController extends AbstractController
 {
     /**
-     * @Route("/list", name="todo_list")
+     * @Route("/list/min-{minId}/max-{maxId}", name="todo_list")
+     * @Route("/list", name="todo_list_base")
+     * @Route("/l", name="todo_list_shortcut")
      */
-    public function list(TodoItemRepository $todoRepo)
+    public function list(TodoItemRepository $todoRepo, $minId = 0, $maxId=999)
     {
         $countResult = $todoRepo->count(['done' => false]);
 
@@ -30,7 +32,7 @@ class TodoController extends AbstractController
         //$todoList = $todoRepo->findBy(['done' => false]);
 
         // TP 9.1
-        $todoList = $todoRepo->getBetween2and7();
+        $todoList = $todoRepo->getBetween($minId, $maxId);
 
         // TodoList sera le nom de la variable dans mon fichier twig
         // Elle contient le tableau de Todo
