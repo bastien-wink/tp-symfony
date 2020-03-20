@@ -6,7 +6,7 @@
             Mon application Todo-list
         {% endblock %}
     </title>
-
+    <link rel="stylesheet" href="{{ asset('/css/style.css') }}" />
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
           integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
 </head>
@@ -18,8 +18,16 @@
 
 <nav class="navbar  navbar-dark bg-dark">
     <a href="/">Home</a>
-    <a href="{{ path('todo_list') }}">Todo list</a>
+    <a href="{{ path('todo_create') }}">Nouveau</a>
+    <a href="{{ path('todo_list') }}">Lister</a>
 </nav>
+
+{# read and display just one flash message type #}
+{% for message in app.flashes('success') %}
+    <div  class="alert alert-success" role="alert">
+        {{ message }}
+    </div>
+{% endfor %}
 
 {% block content %}{% endblock %}
 

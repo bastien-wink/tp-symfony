@@ -3,9 +3,11 @@
 namespace App\Controller;
 
 use App\Entity\TodoItem;
+use App\Form\TodoItemType;
 use App\Repository\TodoItemRepository;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Routing\Annotation\Route;
 
 class TodoController extends AbstractController
@@ -68,19 +70,36 @@ class TodoController extends AbstractController
     /**
      * @Route("/create", name="todo_create")
      */
-    public function create(EntityManagerInterface $em)
+    public function create(Request $request, EntityManagerInterface $em)
     {
+        // TP 9
+        //$newTodoItem = new TodoItem();
+        //$newTodoItem->setTitle("Faire du sport 30min");
+        //$newTodoItem->setDescription("C'est important");
+        //$newTodoItem->setDone(false);
+        //$em->persist($newTodoItem);
+        //$em->flush();
 
         $newTodoItem = new TodoItem();
 
-        $newTodoItem->setTitle("Faire du sport 30min");
-        $newTodoItem->setDescription("C'est important");
-        $newTodoItem->setDone(false);
+        $todoForm = $this->createForm(TodoItemType::class, $newTodoItem);
+        $todoForm->handleRequest($request);
 
-        $em->persist($newTodoItem);
-        $em->flush();
+        if($todoForm->isSubmitted()){
 
-        return $this->redirectToRoute('todo_list_base');
+            $newTodoItem->setDone(false);
+
+            $em->persist($newTodoItem);
+            $em->flush();
+
+            $this->addFlash('success', 'Todo ajouté à la liste !');
+
+            return $this->redirectToRoute('todo_list_base');
+        }
+
+        return $this->render('todo/create.html.twig', [
+            'todoForm' => $todoForm->createView()
+        ]);
     }
 
     /**
