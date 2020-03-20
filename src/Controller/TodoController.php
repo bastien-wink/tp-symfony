@@ -85,7 +85,7 @@ class TodoController extends AbstractController
         $todoForm = $this->createForm(TodoItemType::class, $newTodoItem);
         $todoForm->handleRequest($request);
 
-        if($todoForm->isSubmitted()){
+        if($todoForm->isSubmitted() && $todoForm->isValid()){
 
             $newTodoItem->setDone(false);
 

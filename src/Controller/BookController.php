@@ -57,8 +57,8 @@ class BookController extends AbstractController
 
         $bookForm->handleRequest($request);
 
-//        if(isset($_POST))
-        if($bookForm->isSubmitted()){
+        // équivalent à if(isset($_POST))
+        if ($bookForm->isSubmitted() && $bookForm->isValid()) {
 
             $em->persist($newBook);
             $em->flush();

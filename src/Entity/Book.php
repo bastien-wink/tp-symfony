@@ -3,6 +3,7 @@
 namespace App\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * @ORM\Entity(repositoryClass="App\Repository\BookRepository")
@@ -23,11 +24,20 @@ class Book
 
     /**
      * @ORM\Column(type="smallint")
+     *
+     * @Assert\Range(
+     *      min = 10,
+     *      max = 10000
+     * )
      */
     private $pages;
 
+
+    const CHOICES = ['fiction', 'non-fiction'];
+
     /**
      * @ORM\Column(type="text", nullable=true)
+     * @Assert\Choice(choices=Book::CHOICES, message="Choose a valid choice.")
      */
     private $description;
 

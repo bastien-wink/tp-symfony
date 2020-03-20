@@ -3,9 +3,12 @@
 namespace App\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints as Assert;
+use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 
 /**
  * @ORM\Entity(repositoryClass="App\Repository\TodoItemRepository")
+ * @UniqueEntity("title", message="Déjà crée")
  */
 class TodoItem
 {
@@ -18,11 +21,17 @@ class TodoItem
 
     /**
      * @ORM\Column(type="string", length=255)
+     * @Assert\Length(min="5", minMessage="5 lettres minimum.")
      */
     private $title;
 
     /**
      * @ORM\Column(type="string", length=255, nullable=true)
+     *
+     * @Assert\Choice(
+     *     choices={"Urgent", "Pas Urgent"},
+     *     message="Les valeurs ne peuvent être que {{ choices }}"
+     * )
      */
     private $description;
 
